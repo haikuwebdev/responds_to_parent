@@ -16,7 +16,7 @@ module ActionController
       def assert_select_parent(*args, &block)
         wrapper_re_str = Regexp.escape("with(window.parent) { setTimeout(function() { window.eval('") +
                        "(.*)" +
-                       Regexp.escape("'); loc.replace('about:blank'); }, 1) }")
+                       Regexp.escape("'); window.loc && loc.replace('about:blank'); }, 1) }")
         match = @response.body.match(Regexp.new(wrapper_re_str))
 
         if match
@@ -64,7 +64,7 @@ module ActionController
       def assert_select_parent(*args, &block)
         wrapper_re_str = Regexp.escape("with(window.parent) { setTimeout(function() { window.eval('") +
                        "(.*)" +
-                       Regexp.escape("'); loc.replace('about:blank'); }, 1) }")
+                       Regexp.escape("'); window.loc && loc.replace('about:blank'); }, 1) }")
         match = @response.body.match(Regexp.new(wrapper_re_str))
 
         if match
@@ -112,7 +112,7 @@ module ActionController
       def assert_select_parent(*args, &block)
         wrapper_re_str = Regexp.escape("with(window.parent) { setTimeout(function() { window.eval('") +
                        "(.*)" +
-                       Regexp.escape("'); loc.replace('about:blank'); }, 1) }")
+                       Regexp.escape("'); window.loc && loc.replace('about:blank'); }, 1) }")
         match = @response.body.match(Regexp.new(wrapper_re_str))
 
         if match
